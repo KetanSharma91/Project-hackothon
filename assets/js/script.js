@@ -43,7 +43,7 @@ if (!puter.auth.isSignedIn()) {
 }
 else {
     // window.location.href = `upload.html`;
-    if(document.getElementById('sign-in'){
+    if(document.getElementById('sign-in')){
     document.getElementById('sign-in').innerHTML = 'Logged In';
     }
 }
