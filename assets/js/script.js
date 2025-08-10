@@ -6,7 +6,7 @@ document.getElementById('sign-in').addEventListener('click', async () => {
         signInPuter();
     }
     else {
-        window.location.href = `/upload.html`;
+        window.location.href = `upload.html`;
         document.getElementById('sign-in').innerHTML = 'Logged In';
     }
 });
@@ -17,7 +17,7 @@ document.getElementById('sign-in2').addEventListener('click', async () => {
         signInPuter();
     }
     else {
-        window.location.href = `/upload.html`;
+        window.location.href = `upload.html`;
         document.getElementById('sign-in').innerHTML = 'Logged In';
     }
 });
@@ -26,7 +26,7 @@ async function signInPuter() {
     // signIn() will resolve when the user has signed in.
     await puter.auth.signIn().then((res) => {
         // puter.print('Signed in<br>' + JSON.stringify(res));
-        window.location.href = `/upload.html`;
+        window.location.href = `upload.html`;
         document.getElementById('sign-in').innerHTML = 'Get your Roadmap';
     });
 }
@@ -35,7 +35,7 @@ if (!puter.auth.isSignedIn()) {
     signInPuter();
 }
 else {
-    // window.location.href = `/upload.html`;
+    // window.location.href = `upload.html`;
     document.getElementById('sign-in').innerHTML = 'Logged In';
 }
 
@@ -234,7 +234,7 @@ async function getroadmap(name, topic, selectedKeywords) {
     setStatusText('Analysis complete, redirecting...');
     updateStatusText();
 
-    window.location.href = `/roadmap.html?id=${encodeURIComponent(data)}`;
+    window.location.href = `roadmap.html?id=${encodeURIComponent(data)}`;
 
 }
 
