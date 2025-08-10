@@ -44,7 +44,7 @@ const [statusText, setStatusText] = useState('');
 
 async function addRoadmap(userId, topic, weeks) {
     try {
-        const res = await fetch("http://localhost:5000/api/addRoadmap", {
+        const res = await fetch("https://project-hackothon.onrender.com/api/addRoadmap", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -153,7 +153,7 @@ function updateStatusText() {
 
 async function addUserinDb(name, topic, selectedKeywords) {
     try {
-        const res = await fetch("http://localhost:5000/api/add", {
+        const res = await fetch("https://project-hackothon.onrender.com/api/add", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ Name: name, topic: topic, keywords: selectedKeywords })
@@ -229,7 +229,7 @@ async function getroadmap(name, topic, selectedKeywords) {
 
 async function rendertopicdata() {
     try {
-        const response = await fetch("http://localhost:5000/api/getRoadmaps");
+        const response = await fetch("https://project-hackothon.onrender.com/api/getRoadmaps");
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -315,7 +315,7 @@ const fetchRoadmapFromHome = async () => {
     if (roadmapId) {
 
         try {
-            const response = await fetch(`http://localhost:5000/api/getRoadmap/${roadmapId}`);
+            const response = await fetch(`https://project-hackothon.onrender.com/api/getRoadmap/${roadmapId}`);
 
             // console.log(response)
             if (!response.ok) {
