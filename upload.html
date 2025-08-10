@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> -->
+    <link rel="icon" href="favicon.ico?v=1" type="image/x-icon">
+
+    <title>Roadmapy</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body class="bg-white">
+    <main class="bg-[url('assets/images/bg-main.svg')] bg-cover min-h-screen pt-10">
+        <nav
+            class='flex flex-row justify-between items-center bg-white rounded-full p-4 w-full lg:px-10 max-w-[1200px] mx-auto'>
+            <a href="index.html">
+                <p
+                    class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#AB8C95] via-[#000000] to-[#8E97C5]">
+                    Roadmapy</p>
+            </a>
+            <a id="sign-in" class='primary-gradient text-white rounded-full px-4 py-2 cursor-pointer w-fit'>
+                Get your Roadmap
+            </a>
+        </nav>
+
+        <section class="flex flex-col items-center gap-8 pt-12 max-sm:mx-2 mx-15 pb-5">
+            <div id="FormScreen" class="flex flex-col items-center gap-8 max-w-4xl text-center max-sm:gap-4 py-1">
+                <h1 class="max-sm:text-[3rem] text-6xl  text-gradient leading-tight xl:tracking-[-2px] font-semibold">
+                    Get your best Roadmap to choice your perfect career
+                </h1>
+
+                <form id="UploadForm" name="uploadform" onSubmit="" class="flex flex-col gap-4 mt-8items-start w-full">
+                    <div class="flex flex-col gap-2 w-full items-start">
+                        <label class="text-dark-200" htmlFor="name">Name</label>
+                        <input class="w-full p-4 inset-shadow rounded-2xl focus:outline-none bg-white" type="text"
+                            name='name' id='name' placeholder='Name' required />
+                    </div>
+
+                    <div class="flex flex-col gap-2 w-full items-start">
+                        <label class="text-dark-200" htmlFor="topic">Topic</label>
+                        <select id="title" name="title"
+                            class="w-full p-4 inset-shadow rounded-2xl focus:outline-none bg-white block px-4 py-2 text-gray-700 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 appearance-none">
+                            <option value="topic">Topic</option>
+                            <option value="Entrepreneurship">Entrepreneurship</option>
+                            <option value="Digital Marketing">Digital Marketing</option>
+                            <option value="Project Management">Project Management</option>
+                            <option value="Cloud Computing">Cloud Computing</option>
+                            <option value="Mobile App Development">Mobile App Development</option>
+                            <option value="UI/UX Design">UI/UX Design</option>
+                            <option value="Machine Learning">Machine Learning</option>
+                            <option value="Data Structures & Algorithms">Data Structures & Algorithms</option>
+                            <option value="Python Basics">Python Basics</option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="3D Design">3D Design</option>
+                        </select>
+                    </div>
+
+                    <div class="flex flex-col gap-2 w-full items-start">
+                        <label class="text-dark-200" htmlFor="job-title">Keywords</label>
+                        <div id="keywords" class="flex flex-wrap gap-2">
+                            <!-- <button class="px-3 py-1 text-dark-200 bg-gray-200 rounded hover:bg-gray-300"
+                                data-keyword="HTML">HTML</button> -->
+                        </div>
+                    </div>
+
+                    <button id="uploadbtn"
+                        class='primary-gradient text-white rounded-full px-4 py-2 cursor-pointer w-full mt-10 mb-10'
+                        type='submit'>
+                        Analyze Details
+                    </button>
+                </form>
+
+            </div>
+
+            <div id="loadingScreen" class="flex flex-col items-center gap-8 max-w-4xl text-center max-sm:gap-4 py-1 hidden">
+                <h2 id="StatusText" class="max-sm:text-xl text-3xl text-dark-200 mb-8"></h2>
+                <img src="assets/images/giphy.gif" alt="gif" className='w-full' />
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="https://js.puter.com/v2/"></script>
+
+    <script type="module" src="assets/js/script.js"></script>
+</body>
+
+</html>

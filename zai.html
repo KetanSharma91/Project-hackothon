@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hugging Face Chat Example</title>
+
+    <script src="https://js.puter.com/v2/"></script>
+</head>
+
+<body>
+    <button onclick="pressBtn()" id="btn" type="button">Click</button>
+
+    <script>
+
+        // const apikey = "1XoTRHyZmMgmctvK2RzPmaJuFHIonblpZs3gyftz";
+
+        const topic = "web dev";
+        const keywords = [
+            "Introduction",
+            "Basics",
+            "Core Concepts",
+            "Tools & Resources",
+        ];
+
+        const prompt = `
+    Create a detailed learning roadmap JSON for the topic "${topic}".
+    Use the following keywords as main steps: ${keywords}.
+    Structure the roadmap into exactly FOUR weeks.
+    Each week should have multiple steps related to the keywords.
+    Output the result ONLY as JSON.
+
+    Example format:
+    {
+      "topic": "Web Development",
+      "weeks": [
+        {
+          "week": 1,
+          "steps": [
+            {
+              "title": "Step title",
+              "description": "Step description",
+              "resources": {
+                "youtube": ["url1"],
+                "articles": ["url2"],
+                "websites": ["url3"]
+              }
+            }
+          ]
+        },
+        {
+          "week": 2,
+          "steps": [ ... ]
+        },
+        {
+          "week": 3,
+          "steps": [ ... ]
+        },
+        {
+          "week": 4,
+          "steps": [ ... ]
+        }
+      ]
+    }
+
+    Generate the roadmap now.
+    `;
+
+        function pressBtn() {
+            puter.ai.chat(prompt, { model: "gpt-4.1-nano" })
+                .then(response => {
+                    puter.print(response);
+                    // console.log(response.message.content);
+                    const contentStr = response.message.content; // raw string from AI
+                    const jsonData = JSON.parse(contentStr);     // convert string → JS object
+
+                    // const onlyTopic = { topic: jsonData.topic }; // keep only topic
+                    // const jsonString = JSON.stringify(onlyTopic, null, 2); // JS object → JSON string
+
+                    console.log(jsonData);
+                })
+                .catch(err => {
+                    console.error("Error:", err);
+                });
+
+        }
+    </script>
+</body>
+
+</html>
