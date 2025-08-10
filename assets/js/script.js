@@ -1,5 +1,7 @@
 import { keywords } from './demodata.js';
 
+
+if(document.getElementById('sign-in')){
 document.getElementById('sign-in').addEventListener('click', async () => {
 
     if (!puter.auth.isSignedIn()) {
@@ -10,7 +12,9 @@ document.getElementById('sign-in').addEventListener('click', async () => {
         document.getElementById('sign-in').innerHTML = 'Logged In';
     }
 });
+}
 
+if(document.getElementById('sign-in2')){
 document.getElementById('sign-in2').addEventListener('click', async () => {
 
     if (!puter.auth.isSignedIn()) {
@@ -21,13 +25,16 @@ document.getElementById('sign-in2').addEventListener('click', async () => {
         document.getElementById('sign-in').innerHTML = 'Logged In';
     }
 });
+}
 
 async function signInPuter() {
     // signIn() will resolve when the user has signed in.
     await puter.auth.signIn().then((res) => {
         // puter.print('Signed in<br>' + JSON.stringify(res));
         window.location.href = `upload.html`;
+        if(document.getElementById('sign-in')){
         document.getElementById('sign-in').innerHTML = 'Get your Roadmap';
+        }
     });
 }
 
@@ -36,7 +43,9 @@ if (!puter.auth.isSignedIn()) {
 }
 else {
     // window.location.href = `upload.html`;
+    if(document.getElementById('sign-in'){
     document.getElementById('sign-in').innerHTML = 'Logged In';
+    }
 }
 
 // Simple custom useState
