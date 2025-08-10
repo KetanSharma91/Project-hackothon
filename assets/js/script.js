@@ -11,6 +11,17 @@ document.getElementById('sign-in').addEventListener('click', async () => {
     }
 });
 
+document.getElementById('sign-in2').addEventListener('click', async () => {
+
+    if (!puter.auth.isSignedIn()) {
+        signInPuter();
+    }
+    else {
+        window.location.href = `/upload.html`;
+        document.getElementById('sign-in').innerHTML = 'Logged In';
+    }
+});
+
 async function signInPuter() {
     // signIn() will resolve when the user has signed in.
     await puter.auth.signIn().then((res) => {
