@@ -1,22 +1,40 @@
 import { keywords } from './demodata.js';
 
+
+if(document.getElementById('sign-in')){
 document.getElementById('sign-in').addEventListener('click', async () => {
 
     if (!puter.auth.isSignedIn()) {
         signInPuter();
     }
     else {
-        window.location.href = `/upload.html`;
+        window.location.href = `upload.html`;
         document.getElementById('sign-in').innerHTML = 'Logged In';
     }
 });
+}
+
+if(document.getElementById('sign-in2')){
+document.getElementById('sign-in2').addEventListener('click', async () => {
+
+    if (!puter.auth.isSignedIn()) {
+        signInPuter();
+    }
+    else {
+        window.location.href = `upload.html`;
+        document.getElementById('sign-in').innerHTML = 'Logged In';
+    }
+});
+}
 
 async function signInPuter() {
     // signIn() will resolve when the user has signed in.
     await puter.auth.signIn().then((res) => {
         // puter.print('Signed in<br>' + JSON.stringify(res));
-        window.location.href = `/upload.html`;
+        window.location.href = `upload.html`;
+        if(document.getElementById('sign-in')){
         document.getElementById('sign-in').innerHTML = 'Get your Roadmap';
+        }
     });
 }
 
@@ -24,8 +42,10 @@ if (!puter.auth.isSignedIn()) {
     signInPuter();
 }
 else {
-    // window.location.href = `/upload.html`;
+    // window.location.href = `upload.html`;
+    if(document.getElementById('sign-in')){
     document.getElementById('sign-in').innerHTML = 'Logged In';
+    }
 }
 
 // Simple custom useState
@@ -44,7 +64,7 @@ const [statusText, setStatusText] = useState('');
 
 async function addRoadmap(userId, topic, weeks) {
     try {
-        const res = await fetch("http://localhost:5000/api/addRoadmap", {
+        const res = await fetch("https://project-hackothon.onrender.com/api/addRoadmap", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -153,7 +173,7 @@ function updateStatusText() {
 
 async function addUserinDb(name, topic, selectedKeywords) {
     try {
-        const res = await fetch("http://localhost:5000/api/add", {
+        const res = await fetch("https://project-hackothon.onrender.com/api/add", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ Name: name, topic: topic, keywords: selectedKeywords })
@@ -223,13 +243,13 @@ async function getroadmap(name, topic, selectedKeywords) {
     setStatusText('Analysis complete, redirecting...');
     updateStatusText();
 
-    window.location.href = `/roadmap.html?id=${encodeURIComponent(data)}`;
+    window.location.href = `roadmap.html?id=${encodeURIComponent(data)}`;
 
 }
 
 async function rendertopicdata() {
     try {
-        const response = await fetch("http://localhost:5000/api/getRoadmaps");
+        const response = await fetch("https://project-hackothon.onrender.com/api/getRoadmaps");
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -315,7 +335,7 @@ const fetchRoadmapFromHome = async () => {
     if (roadmapId) {
 
         try {
-            const response = await fetch(`http://localhost:5000/api/getRoadmap/${roadmapId}`);
+            const response = await fetch(`https://project-hackothon.onrender.com/api/getRoadmap/${roadmapId}`);
 
             // console.log(response)
             if (!response.ok) {
