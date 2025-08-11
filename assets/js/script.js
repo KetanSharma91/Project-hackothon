@@ -243,7 +243,8 @@ async function getroadmap(name, topic, selectedKeywords) {
     setStatusText('Analysis complete, redirecting...');
     updateStatusText();
 
-    window.location.href = `roadmap.html?id=${encodeURIComponent(data)}`;
+    // window.location.href = `roadmap.html?id=${encodeURIComponent(data)}`;
+    window.location.href = `roadmap.html?id=${data.userId}`;
 
 }
 
