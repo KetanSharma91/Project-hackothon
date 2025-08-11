@@ -1,6 +1,8 @@
 import User from "../models/userRoadmap.js";
 import Roadmap from "../models/Roadmap.js"; // Path to your roadmap schema
 
+import mongoose from 'mongoose';
+
 // Get all roadmaps
 export const getRoadmaps = async (req, res) => {
   try {
@@ -15,9 +17,10 @@ export const getRoadmaps = async (req, res) => {
 // Get roadmap by ID
 export const getRoadmapById = async (req, res) => {
   try {
-    const { userId } = req.params;
-    const roadmap = await Roadmap.findOne(userId);
-
+    // const userId = req.params.userId;
+    const userId = new mongoose.Types.ObjectId(req.params);
+    const roadmap = await Roadmap.findOne({ userId });
+    
     if (!roadmap) {
       return res.status(404).json({ error: "Roadmap not found" });
     }
